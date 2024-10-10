@@ -1,0 +1,26 @@
+/* src/components/Button.css */
+.btn {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s;
+  }
+  
+  .btn:hover {
+    background-color: #007bff; /* Change to your desired hover color */
+    color: white;
+  }
+  
+  .btn:disabled {
+    background-color: #ccc; /* Color when disabled */
+    cursor: not-allowed;
+  }
+  
+  /* Example of a primary button */
+  .primary {
+    background-color: #28a745;
+    color: white;
+  }
+  
