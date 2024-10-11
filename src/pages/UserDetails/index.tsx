@@ -27,8 +27,8 @@ const UserDetails: React.FC = () => {
       <p>Phone: {user?.phone}</p>
       <p>Company Name: {user?.company.name}</p>
       <p>Company Title: {user?.company.title}</p>
-      <p>Company Department: {user?.company.department}</p>
-      <p>Company Address: {user?.company?.address.address}</p>
+      <p>Company Department: {user?.company?.department}</p>
+      <p>Company Address: {user?.company?.address?.address}</p>
     </>
   );
 };
