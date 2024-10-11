@@ -4,7 +4,7 @@ on:
   push:
     branches:
       - main   # For production deployment
-      - development  # For dev deployment
+      - development  # For staging deployment
 
 jobs:
   deploy:
@@ -31,3 +31,4 @@ jobs:
             npx vercel --prod --token ${{ secrets.VERCEL_TOKEN }}
           else
             npx vercel --token ${{ secrets.VERCEL_TOKEN }}
+          fi  # Close the if/else block with 'fi'
