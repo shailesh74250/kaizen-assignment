@@ -1,4 +1,4 @@
-import './index.css'
+import './main.scss'
 import AppRouter from './AppRouter.tsx'
 import Navbar from './components/Navbar/Navbar.tsx'
 import { BrowserRouter } from 'react-router-dom'
@@ -15,5 +15,5 @@ createRoot(document.getElementById('root')!).render(
         <AppRouter />
       </BrowserRouter>
     </Provider>
-  </StrictMode>,
+  </StrictMode>
 )

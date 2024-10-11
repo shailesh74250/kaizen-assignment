@@ -1,14 +1,15 @@
-// src/components/Navbar.tsx
-import { Link } from 'react-router-dom'
+import './Navbar.scss'
 import './Navbar.scss'; 
 import React from 'react';
+import Logo from '../../assets/logo.png'
 
 const Navbar: React.FC = () => {
   return (
     <nav className="navbar">
-      <div className="navbar-brand">
-        <Link to="/">Kaizen Assignment</Link>
+      <div className="navbar-logo">
+        <img src={Logo} alt="Logo" className="logo" />
       </div>
+      <h2>Kaizen Assignment</h2>
     </nav>
   )
 }

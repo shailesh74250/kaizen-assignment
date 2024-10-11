@@ -1,4 +1,3 @@
-// src/components/Loader.tsx
 import React from 'react';
 import './loader.scss'; // Optional CSS file for styling
 
