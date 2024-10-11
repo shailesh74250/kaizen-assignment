@@ -23,7 +23,7 @@ const userReducer = createSlice({
       })
       .addCase(fetchUsers.fulfilled, (state, action) => {
         state.loading = false;
-        state.users = action.payload.users;
+        state.users = action.payload;
       })
       .addCase(fetchUsers.rejected, (state, action) => {
         state.loading = false;
@@ -38,7 +38,7 @@ const userReducer = createSlice({
       })
       .addCase(searchUser.fulfilled, (state, action) => {
         state.loading = false;
-        state.users = action.payload.users;
+        state.users = action.payload;
       })
       .addCase(searchUser.rejected, (state, action) => {
         state.loading = false;

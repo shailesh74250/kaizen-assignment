@@ -9,7 +9,7 @@ import { useParams } from 'react-router-dom'
 const UserDetails: React.FC = () => {
   const { id } = useParams<{ id: string }>(); // Get the user id from the URL
   const dispatch = useAppDispatch();
-  const { user, loading, error } = useAppSelector((state) => state.users)
+  const { user, error } = useAppSelector((state) => state.users)
 
   useEffect(() => {
     dispatch(getSingleUser(id))

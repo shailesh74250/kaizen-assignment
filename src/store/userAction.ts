@@ -8,7 +8,7 @@ export const fetchUsers = createAsyncThunk<UserType[], void>(
   async () => {
     const apiUrl = import.meta.env.VITE_API_URL;
     const response = await axios.get(apiUrl);
-    return response.data; 
+    return response.data.users; 
   }
 );
 
@@ -18,7 +18,7 @@ export const searchUser = createAsyncThunk<UserType[], string>(
   async (name: string) => {
     const apiUrl = import.meta.env.VITE_API_URL;
     const response = await axios.get(`${apiUrl}/search?q=${name}`);
-    return response.data;
+    return response.data.users;
   }
 );
 
