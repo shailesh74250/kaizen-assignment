@@ -1,0 +1,36 @@
+name: Deploy React TypeScript App to Vercel
+
+on:
+  push:
+    branches:
+      - dev-deployment  # Trigger deployment on push to the main branch (or master)
+  pull_request:
+    branches:
+      - dev-deployment
+
+jobs:
+  deploy:
+    name: Deploy to Vercel
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Install Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '20.10.0' # Use the Node.js version compatible with your project
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build the project
+        run: npm run build # This builds your React TypeScript project
+
+      - name: Deploy to Vercel
+        run: npx vercel --dev --token ${{ secrets.VERCEL_TOKEN }}
+
+      # Optionally, you can add a test step to ensure everything is correct before deploying
+      # - name: Run tests
+      #   run: npm test
