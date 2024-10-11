@@ -1,4 +1,3 @@
-// src/components/Table.tsx
 import './Table.scss';
 import Loader from '../Loader';
 import React from 'react';
@@ -7,7 +6,9 @@ import { getNestedValue } from '../../utils/getNestedValue';
 
 const Table = <T,>({ data, columns, onRowClick, isLoading, error }: TablePropsType<T>) => {
   if (isLoading) {
-    return <Loader color="#3498db" />
+    return <div className='loader'>
+      <Loader size='small' color="#3498db" />
+    </div>
   }
   // Render error state
   if (error) {
@@ -23,13 +24,13 @@ const Table = <T,>({ data, columns, onRowClick, isLoading, error }: TablePropsTy
         </tr>
       </thead>
       <tbody>
-        {data.map((row, rowIndex) => (
+        {data.length > 0 ? data.map((row, rowIndex) => (
           <tr key={rowIndex} onClick={() => onRowClick && onRowClick(row)}>
             {columns.map((column) => (
               <td key={column.Header}>{String(getNestedValue(row, column.accessor))}</td>
             ))}
           </tr>
-        ))}
+        )) : <p>No Data Found!</p>}
       </tbody>
     </table>
   );

@@ -1,5 +1,4 @@
-// src/components/Users.tsx
-import './Use.scss'
+import './User.scss'
 import React, { useEffect } from 'react';
 import { useAppDispatch } from '../../hooks/useAppDispatch'
 import { useAppSelector } from '../../hooks/useAppSelector'
@@ -34,7 +33,8 @@ const Users: React.FC = () => {
   };
 
   return (
-    <>
+    <div className='user-container'>
+      <h2>User List</h2>
       <SearchUser />
       <Table
         data={users}
@@ -42,7 +42,7 @@ const Users: React.FC = () => {
         onRowClick={handleRowClick}
         isLoading={loading}
       />
-    </>
+    </div>
   );
 };
 

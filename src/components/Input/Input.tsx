@@ -1,4 +1,3 @@
-// src/components/Input.tsx
 import './Input.scss'
 interface InputProps {
   type?: string;              // Input type (e.g., text, password, etc.)

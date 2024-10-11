@@ -1,0 +1,17 @@
+/* Basic styling for the navbar */
+.navbar {
+  align-items: center;
+  background-color: #ff8585;
+  color: white;
+  display: flex;
+  gap: 2rem;
+  left: 0;
+  padding: 0.2rem 1.5rem;
+  top: 0;
+  z-index: 1000;
+}
+  
+.navbar-logo .logo {
+  height: 50px; /* Adjust the logo height */
+}
+  
