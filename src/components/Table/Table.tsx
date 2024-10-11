@@ -1,31 +1,18 @@
 // src/components/Table.tsx
 import './Table.scss';
+import Loader from '../Loader';
 import React from 'react';
+import { TablePropsType } from './TableType';
+import { getNestedValue } from '../../utils/getNestedValue';
 
-// Define the type for the table props
-interface TableProps<T> {
-  data: T[];
-  columns: {
-    Header: string;
-    accessor: string; // Accessor can be a key of the data type
-  }[];
-  onRowClick?: (row: T) => void;
-  isLoading?: boolean;
-  error?: string;
-}
-
-// Table Component
-const Table = <T,>({ data, columns, onRowClick, isLoading, error }: TableProps<T>) => {
-  // Render loading state
+const Table = <T,>({ data, columns, onRowClick, isLoading, error }: TablePropsType<T>) => {
   if (isLoading) {
-    return <div>Loading...</div>;
+    return <Loader color="#3498db" />
   }
-
   // Render error state
   if (error) {
     return <div>Error: {error}</div>;
   }
-
   return (
     <table>
       <thead>
@@ -39,7 +26,7 @@ const Table = <T,>({ data, columns, onRowClick, isLoading, error }: TableProps<T
         {data.map((row, rowIndex) => (
           <tr key={rowIndex} onClick={() => onRowClick && onRowClick(row)}>
             {columns.map((column) => (
-              <td key={column.Header}>{String(row[column.accessor])}</td>
+              <td key={column.Header}>{String(getNestedValue(row, column.accessor))}</td>
             ))}
           </tr>
         ))}
@@ -48,4 +35,4 @@ const Table = <T,>({ data, columns, onRowClick, isLoading, error }: TableProps<T
   );
 };
 
-export default React.memo(Table); // Memoize the component to optimize re-renders
+export default React.memo(Table);

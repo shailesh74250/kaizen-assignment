@@ -1,4 +1,5 @@
 // src/components/Button.tsx
+import './Button.scss'
 interface ButtonProps {
   onClick: () => void; // Function to be called on button click
   label: string;       // Text to be displayed on the button

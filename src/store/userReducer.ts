@@ -1,54 +1,63 @@
-// src/store/userSlice.ts
-import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-import axios from 'axios';
-
-interface User {
-  id: number;
-  name: string;
-  email: string;
-}
-
-interface UserState {
-  users: User[];
-  loading: boolean;
-  error: string | null;
-}
+import { createSlice } from '@reduxjs/toolkit';
+import { searchUser, fetchUsers, getSingleUser } from './userAction';
+import { UserState } from './userType';
 
 // Initial state
 const initialState: UserState = {
   users: [],
+  user: null,
   loading: false,
   error: null,
 };
-
-// Create an async thunk for fetching users
-export const fetchUsers = createAsyncThunk<User[], void>(
-  'users/fetchUsers',
-  async () => {
-    const apiUrl = import.meta.env.VITE_API_URL;
-    const response = await axios.get(apiUrl);
-    return response.data; 
-  }
-);
 
 const userReducer = createSlice({
   name: 'users',
   initialState,
   reducers: {}, // You can add synchronous reducers here if needed
   extraReducers: (builder) => {
+    // Fetch all users
     builder
       .addCase(fetchUsers.pending, (state) => {
         state.loading = true;
         state.error = null;
       })
       .addCase(fetchUsers.fulfilled, (state, action) => {
-        console.log(action.payload);
         state.loading = false;
-        state.users = action.payload?.users;
+        state.users = action.payload.users;
       })
       .addCase(fetchUsers.rejected, (state, action) => {
         state.loading = false;
         state.error = action.error.message || 'Failed to fetch users';
+      });
+
+    // Search users by name
+    builder
+      .addCase(searchUser.pending, (state) => {
+        state.loading = true;
+        state.error = null;
+      })
+      .addCase(searchUser.fulfilled, (state, action) => {
+        state.loading = false;
+        state.users = action.payload.users;
+      })
+      .addCase(searchUser.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.error.message || 'Failed to search users';
+      });
+
+    // Get a single user by ID
+    builder
+      .addCase(getSingleUser.pending, (state) => {
+        state.loading = true;
+        state.error = null;
+      })
+      .addCase(getSingleUser.fulfilled, (state, action) => {
+        state.loading = false;
+        state.user = action.payload;
+      })
+      .addCase(getSingleUser.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.error.message || 'Failed to fetch user';
       });
   },
 });
