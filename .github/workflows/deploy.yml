@@ -1,10 +1,10 @@
-name: Deploy Kaizen Assignment to Vercel
+name: Deploy React TypeScript App to Vercel
 
 on:
   push:
     branches:
       - main   # For production deployment
-      - development  # For staging deployment
+      - staging  # For staging deployment
 
 jobs:
   deploy:
@@ -17,7 +17,7 @@ jobs:
       - name: Install Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: '18'
+          node-version: '20.10,0'
 
       - name: Install dependencies
         run: npm install
@@ -31,8 +31,3 @@ jobs:
             npx vercel --prod --token ${{ secrets.VERCEL_TOKEN }}
           else
             npx vercel --token ${{ secrets.VERCEL_TOKEN }}
-
-
-      # Optionally, you can add a test step to ensure everything is correct before deploying
-      # - name: Run tests
-      #   run: npm test
