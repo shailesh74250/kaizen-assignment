@@ -28,7 +28,7 @@ const UserList: React.FC = () => {
   }, [dispatch]);
 
   if (error) {
-    return Notify(error, 'error');
+    Notify(error, 'error');
   }
 
   const handleRowClick = useCallback(

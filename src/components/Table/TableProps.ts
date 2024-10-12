@@ -1,4 +1,4 @@
-export interface TablePropsType<T> {
+export interface TableProps<T> {
   data: T[];
   columns: {
     Header: string;

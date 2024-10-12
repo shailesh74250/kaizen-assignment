@@ -13,7 +13,7 @@ const SearchUser: React.FC = () => {
   const { loading, error } = useAppSelector((state) => state.users);
 
   if (error) {
-    return Notify(error, 'error');
+    Notify(error, 'error');
   }
 
   const handleOnClick = () => {
