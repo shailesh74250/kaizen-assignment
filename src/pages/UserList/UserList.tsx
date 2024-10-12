@@ -32,7 +32,7 @@ const UserList: React.FC = () => {
   }
 
   const handleRowClick = useCallback(
-    (user: UserProps) => {
+    (user: any) => {
       navigate(`/users/${user.id}`);
     },
     []

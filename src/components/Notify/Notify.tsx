@@ -1,7 +1,7 @@
 import React from 'react';
 import { ToastContainer, toast, Bounce } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { NotifyProps } from './NotifyProps';
+import { NotifyPropsType } from './NotifyProps';
 
 const defaultOptions = {
   autoClose: 5000,
@@ -14,7 +14,7 @@ const defaultOptions = {
   transition: Bounce,
 }
 
-export const Notify = (message: string, type?: NotifyProps) => {
+export const Notify = (message: string, type?: NotifyPropsType) => {
   switch(type) {
     case 'error':
       toast.error(message, defaultOptions);

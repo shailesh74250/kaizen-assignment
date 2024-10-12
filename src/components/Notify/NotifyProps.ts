@@ -1,1 +1,1 @@
-export interface NotifyProps = 'deafult' | 'error' | 'info' | 'success';
+export type NotifyPropsType = 'deafult' | 'error' | 'info' | 'success';
