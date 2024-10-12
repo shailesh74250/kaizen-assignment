@@ -1,6 +1,6 @@
-// cypress/integration/users.spec.ts
+/// <reference types="cypress" />
 
-describe('Users Component E2E Test', () => {
+describe('Users List Component E2E Test Cases', () => {
   beforeEach(() => {
     cy.intercept('GET', 'https://dummyjson.com/users', { fixture: 'users.json' }).as('fetchUsers');
     cy.visit('/users');
@@ -24,9 +24,16 @@ describe('Users Component E2E Test', () => {
 
   it('should filter the user list when searching', () => {
     cy.wait('@fetchUsers');
-    cy.get('.input').type('Emily');
-    cy.get('.btn').click();
+    cy.get('[data-testid="search-input"]').type('Emily');
+    cy.get('[data-testid="Search-btn"]').click();
     cy.get('table tbody tr').should('have.length', 2);
     cy.get('table tbody tr').first().should('contain.text', 'Emily');
+  });
+
+  it('should show no data found when searching non exist data', () => {
+    cy.wait('@fetchUsers');
+    cy.get('[data-testid="search-input"]').type('aghtr1234');
+    cy.get('[data-testid="Search-btn"]').click();
+    cy.get('[data-testid="no-data-found"]').should('contain.text', 'No Data Found!');
   });
 });

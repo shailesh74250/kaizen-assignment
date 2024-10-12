@@ -7,6 +7,7 @@ const Button: React.FC<ButtonProps> = ({
   disabled = false,
   variant = 'primary',
   type = 'button',
+  testId 
 }) => {
   return (
     <button
@@ -14,6 +15,7 @@ const Button: React.FC<ButtonProps> = ({
       disabled={disabled}
       className={`${styles.btn} ${styles[variant]}`}
       type={type}
+      data-testid={testId || `${label}-btn`}
     >
       {label}
     </button>

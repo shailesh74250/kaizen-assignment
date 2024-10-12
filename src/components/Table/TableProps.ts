@@ -7,4 +7,5 @@ export interface TableProps<T> {
   onRowClick?: (row: T) => void;
   isLoading?: boolean;
   error?: string;
+  testId?: string;
 }

@@ -6,7 +6,7 @@ import { TableProps } from './TableProps';
 import { getNestedValue } from '../../utils/getNestedValue';
 import { NO_DATA_FOUND } from '../../utils/constants';
 
-const Table = <T,>({ data, columns, onRowClick, isLoading, error }: TableProps<T>) => {
+const Table = <T,>({ data, columns, onRowClick, isLoading, error, testId }: TableProps<T>) => {
   if (isLoading) {
     return <div className={globalStyles.loader}>
       <Loader size='small' color="#3498db" />
@@ -18,22 +18,35 @@ const Table = <T,>({ data, columns, onRowClick, isLoading, error }: TableProps<T
   return (
     <table className={styles.table}>
       <thead>
-        <tr>
+        <tr data-testid={testId || `table-thead-tr`}>
           {columns.map((column) => (
-            <th key={column.Header}>{column.Header}</th>
+            <th key={column.Header} data-testid={testId || `${column.Header}-th`}>{column.Header}</th>
           ))}
         </tr>
       </thead>
       <tbody>
         {data.length > 0 ? data.map((row, rowIndex) => (
-          <tr key={rowIndex} onClick={() => onRowClick && onRowClick(row)}>
+          <tr 
+            key={rowIndex} 
+            onClick={() => onRowClick && onRowClick(row)} 
+            data-testid={testId || `${rowIndex}-tbody-tr`}
+          >
             {columns.map((column) => (
-              <td key={column.Header}>{String(getNestedValue(row, column.accessor))}</td>
+              <td 
+                key={column.Header}
+                data-testid={testId || `${rowIndex}-tbody-tr-td`}
+              >
+                {String(getNestedValue(row, column.accessor))}
+              </td>
             ))}
           </tr>
         )) : 
           <tr>
-            <td colSpan={columns.length} style={{ textAlign: 'center' }}>
+            <td 
+              colSpan={columns.length} 
+              style={{ textAlign: 'center' }}
+              data-testid={testId || `no-data-found`}
+            >
               {NO_DATA_FOUND}
             </td>
           </tr>

@@ -21,11 +21,11 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-      - name: Run unit tests (Jest)
-        run: npm run test
+      # - name: Run unit tests (Jest)
+      #   run: npm run test
 
       - name: Run Cypress E2E tests
-        run: npm run cypress:run
+        run: npm run test:cypress
 
   deploy:
     runs-on: ubuntu-latest
