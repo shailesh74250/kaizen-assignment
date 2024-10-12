@@ -2,6 +2,6 @@ export interface ButtonProps {
   onClick: () => void; 
   label: string;      
   disabled?: boolean;  
-  className?: string;  
+  variant?: 'primary' | 'secondary';
   type?: 'button' | 'submit' | 'reset'; 
 }

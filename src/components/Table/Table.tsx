@@ -4,6 +4,7 @@ import styles from './Table.module.scss';
 import globalStyles from '../../main.module.scss';
 import { TablePropsType } from './TableProps';
 import { getNestedValue } from '../../utils/getNestedValue';
+import { NO_DATA_FOUND } from '../../utils/constants';
 
 const Table = <T,>({ data, columns, onRowClick, isLoading, error }: TablePropsType<T>) => {
   if (isLoading) {
@@ -30,7 +31,13 @@ const Table = <T,>({ data, columns, onRowClick, isLoading, error }: TablePropsTy
               <td key={column.Header}>{String(getNestedValue(row, column.accessor))}</td>
             ))}
           </tr>
-        )) : <p>No Data Found!</p>}
+        )) : 
+          <tr>
+            <td colSpan={columns.length} style={{ textAlign: 'center' }}>
+              {NO_DATA_FOUND}
+            </td>
+          </tr>
+        }
       </tbody>
     </table>
   );

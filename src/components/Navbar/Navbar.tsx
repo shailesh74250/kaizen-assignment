@@ -7,7 +7,7 @@ const Navbar: React.FC = () => {
   return (
     <nav className={styles.navbar}>
       <div className={styles['navbar-logo']}>
-        <img src={Logo} alt="Logo" className={styles['logo']} />
+        <img src={Logo} alt="Logo"  className={styles['logo']} loading="lazy" />
       </div>
       <h2>{APP_HEADING}</h2>
     </nav>

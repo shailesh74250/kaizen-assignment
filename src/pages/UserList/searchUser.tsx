@@ -1,10 +1,11 @@
 import Button from '../../components/Button/Button';
 import Input from '../../components/Input/Input';
-import React, { useState } from 'react';
+import React, { useState, useCallback } from 'react';
 import styles from './UserList.module.scss';
 import { searchUser } from '../../store/userAction';
 import { useAppDispatch } from '../../hooks/useAppDispatch';
 import { useAppSelector } from '../../hooks/useAppSelector';
+import { Notify } from '../../components/Notify/Notify';
 
 const SearchUser: React.FC = () => {
   const [userName, setUserName] = useState('');
@@ -12,22 +13,28 @@ const SearchUser: React.FC = () => {
   const { loading, error } = useAppSelector((state) => state.users);
 
   if (error) {
-    return <div>Error: {error}</div>;
+    return Notify(error, 'error');
   }
 
   const handleOnClick = () => {
     dispatch(searchUser(userName));
   }
 
-  const handleOnChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setUserName(event.target.value);
-  }
+  const handleOnChange = useCallback(
+    (event: React.ChangeEvent<HTMLInputElement>) => {
+      setUserName(event.target.value);
+    },
+    []
+  );
 
-  const handleOnKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
-    if (event.key === 'Enter') {
-      dispatch(searchUser(userName));
-    }    
-  }
+  const handleOnKeyDown = useCallback(
+    (event: React.KeyboardEvent<HTMLInputElement>) => {
+      if (event.key === 'Enter') {
+        dispatch(searchUser(userName.trim()));
+      }  
+    },
+    []
+  );
 
   return (
     <div className={styles['search-container']}>
@@ -38,7 +45,12 @@ const SearchUser: React.FC = () => {
         onChange={handleOnChange}
         onKeyDown={handleOnKeyDown} 
       />
-      <Button label='Find' onClick={handleOnClick} disabled={loading} />
+      <Button 
+        variant='secondary'
+        disabled={loading} 
+        label='Search' 
+        onClick={handleOnClick} 
+      />
     </div>
   );
 };

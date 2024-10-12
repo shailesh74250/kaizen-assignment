@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useCallback, useEffect } from 'react';
 import SearchUser from './SearchUser';
 import Table from '../../components/Table/Table';
 import styles from './UserList.module.scss';
@@ -7,6 +7,8 @@ import { useAppDispatch } from '../../hooks/useAppDispatch';
 import { useAppSelector } from '../../hooks/useAppSelector';
 import { useNavigate } from 'react-router-dom';
 import { USER_LIST } from '../../utils/constants';
+import { Notify } from '../../components/Notify/Notify';
+import { UserProps } from '../../store/userProps';
 
 const column = [
   { Header: 'First Name', accessor: 'firstName' },
@@ -26,12 +28,15 @@ const UserList: React.FC = () => {
   }, [dispatch]);
 
   if (error) {
-    return <div>Error: {error}</div>;
+    return Notify(error, 'error');
   }
-  
-  const handleRowClick = (user: any) => {
-    navigate(`/users/${user.id}`);
-  };
+
+  const handleRowClick = useCallback(
+    (user: UserProps) => {
+      navigate(`/users/${user.id}`);
+    },
+    []
+  );
 
   return (
     <div className={styles['user-container']}>
