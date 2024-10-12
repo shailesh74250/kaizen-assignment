@@ -1,18 +1,17 @@
-import './Navbar.scss'
-import './Navbar.scss'; 
+import Logo from '../../assets/logo.png';
 import React from 'react';
-import Logo from '../../assets/logo.png'
+import styles from './Navbar.module.scss';
+import { APP_HEADING } from '../../utils/constants'
 
 const Navbar: React.FC = () => {
   return (
-    <nav className="navbar">
-      <div className="navbar-logo">
-        <img src={Logo} alt="Logo" className="logo" />
+    <nav className={styles.navbar}>
+      <div className={styles['navbar-logo']}>
+        <img src={Logo} alt="Logo" className={styles['logo']} />
       </div>
-      <h2>Kaizen Assignment</h2>
+      <h2>{APP_HEADING}</h2>
     </nav>
-  )
-}
+  );
+};
 
-// Wrap the component with React.memo
 export default React.memo(Navbar);

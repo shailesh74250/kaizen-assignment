@@ -1,0 +1,20 @@
+{
+    "id": 1,
+    "firstName": "John",
+    "lastName": "Doe",
+    "email": "john.doe@example.com",
+    "phone": "123-456-7890",
+    "company": {
+      "name": "TechCorp",
+      "title": "Software Engineer",
+      "department": "Development",
+      "address": {
+        "address": "1234 Main St",
+        "city": "Springfield",
+        "state": "IL",
+        "country": "USA",
+        "postalCode": "62704"
+      }
+    }
+  }
+  

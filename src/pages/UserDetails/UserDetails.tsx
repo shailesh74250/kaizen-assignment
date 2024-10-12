@@ -1,10 +1,11 @@
-import './UserDetails.scss'
+import Loader from '../../components/Loader/Loader';
 import React, { useEffect } from 'react';
-import { getSingleUser } from '../../store/userAction'
-import { useAppDispatch } from '../../hooks/useAppDispatch'
-import { useAppSelector } from '../../hooks/useAppSelector'
-import { useParams } from 'react-router-dom'
-import Loader from '../../components/Loader';
+import styles from './UserDetails.module.scss';
+import { getSingleUser } from '../../store/userAction';
+import { useAppDispatch } from '../../hooks/useAppDispatch';
+import { useAppSelector } from '../../hooks/useAppSelector';
+import { useParams } from 'react-router-dom';
+import { USER_DETAILS } from '../../utils/constants';
 
 const UserDetails: React.FC = () => {
   const { id } = useParams<{ id: string }>(); // Get the user id from the URL
@@ -26,10 +27,10 @@ const UserDetails: React.FC = () => {
   }
 
   return (
-    <div className='detail-container'>
+    <div className={styles['detail-container']}>
       {user && (
       <>
-        <h2>User Details</h2>
+        <h2>{USER_DETAILS}</h2>
         <p><strong>First Name:</strong> {user?.firstName}</p>
         <p><strong>Last Name:</strong> {user?.lastName}</p>
         <p><strong>Email:</strong> {user?.email}</p>
@@ -48,4 +49,4 @@ const UserDetails: React.FC = () => {
   );
 };
 
-export default UserDetails
+export default UserDetails;

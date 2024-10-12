@@ -1,19 +1,11 @@
-import './Input.scss'
-interface InputProps {
-  type?: string;              // Input type (e.g., text, password, etc.)
-  value: string;              // Value of the input
-  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void; // Function to call on change
-  placeholder?: string;       // Placeholder text
-  disabled?: boolean;         // Optional prop to disable the input
-  className?: string;         // Optional prop for additional CSS classes
-  name?: string;              // Name of the input for form handling
-  required?: boolean;         // Optional prop to mark the input as required
-}
+import { InputProps } from './InputProps';
+import styles from './Input.module.scss';
 
 const Input: React.FC<InputProps> = ({
   type = 'text',              // Default type is text
   value,
   onChange,
+  onKeyDown,
   placeholder = '',
   disabled = false,
   className = '',
@@ -25,9 +17,10 @@ const Input: React.FC<InputProps> = ({
       type={type}
       value={value}
       onChange={onChange}
+      onKeyDown={onKeyDown}
       placeholder={placeholder}
       disabled={disabled}
-      className={`input ${className}`} // Add your own classes if needed
+      className={`${styles.input} ${className}`} // Add your own classes if needed
       name={name}
       required={required}
     />
