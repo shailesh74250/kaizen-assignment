@@ -1,1 +1,1 @@
-export type NotifyPropsType = 'deafult' | 'error' | 'info' | 'success';
+export type NotifyPropsType = 'default' | 'error' | 'info' | 'success';

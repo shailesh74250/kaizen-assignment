@@ -1,5 +1,5 @@
 import React, { useCallback, useEffect } from 'react';
-import SearchUser from './SearchUser';
+import SearchUser from './UserSearch';
 import Table from '../../components/Table/Table';
 import styles from './UserList.module.scss';
 import { fetchUsers } from '../../store/userAction';
@@ -8,7 +8,7 @@ import { useAppSelector } from '../../hooks/useAppSelector';
 import { useNavigate } from 'react-router-dom';
 import { USER_LIST } from '../../utils/constants';
 import { Notify } from '../../components/Notify/Notify';
-import { UserProps } from '../../store/userProps';
+// import { UserProps } from '../../store/userProps';
 
 const column = [
   { Header: 'First Name', accessor: 'firstName' },
