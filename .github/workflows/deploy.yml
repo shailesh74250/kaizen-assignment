@@ -17,10 +17,22 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: '20.10.0'
-
-      - name: Install dependencies
-        run: npm install
       
+      - name: Cache Node modules
+        uses: actions/cache@v2
+        with:
+          path: |
+            ~/.npm
+            node_modules
+          key: ${{ runner.os }}-node-modules-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-modules-
+    
+      - name: Install dependencies
+        run: |
+          rm -rf node_modules package-lock.json
+          npm install --no-optional # Use `--no-optional` if you're encountering optional dependency issues
+    
       - name: Start server
         run: npm run dev &
         env:
