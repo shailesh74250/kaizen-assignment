@@ -1,4 +1,4 @@
-// cypress/integration/userDetails.spec.js
+/// <reference types="cypress" />
 
 describe('User Details Page', () => {
   const userId = '1'; // Replace this with a real user ID from your mock or seed data
