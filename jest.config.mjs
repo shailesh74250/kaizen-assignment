@@ -1,14 +1,13 @@
 export default {
   preset: 'ts-jest',
-  testEnvironment: 'jest-environment-jsdom',  // Correct environment setup
+  testEnvironment: 'jest-environment-jsdom',
   moduleNameMapper: {
     '\\.(css|less|scss|sass)$': 'identity-obj-proxy',
   },
-   // Optional: if you're using 'babel-jest' or similar transformer
-   transform: {
+  transform: {
     '^.+\\.tsx?$': 'ts-jest',
     '^.+\\.css$': 'jest-transform-css',
-    '\\.(png|jpg|jpeg|gif|svg)$': 'jest-transform-stub', // Mock image imports
+    '\\.(png|jpg|jpeg|gif|svg)$': 'jest-transform-stub',
   },
   setupFilesAfterEnv: ['<rootDir>/src/setupTests.ts'],
 };

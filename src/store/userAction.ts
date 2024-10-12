@@ -1,7 +1,7 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import axios from 'axios'
-import { UserProps } from './userProps'
-import { API_URL } from '../utils/constants'
+import axios from 'axios';
+import { UserProps } from './userProps';
+import { API_URL } from '../utils/constants';
 
 // Fetch all users
 export const fetchUsers = createAsyncThunk<UserProps[], void>(
@@ -26,7 +26,6 @@ export const getSingleUser = createAsyncThunk<UserProps, string | undefined>(
   'users/getSingleUser',
   async (id?: string) => {
     const response = await axios.get(`${API_URL}/${id}`);
-    console.log('user response', response.data)
     return response.data
   }
 );

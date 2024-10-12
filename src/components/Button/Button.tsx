@@ -5,14 +5,14 @@ const Button: React.FC<ButtonProps> = ({
   onClick,
   label,
   disabled = false,
-  className = '',
+  variant = 'primary',
   type = 'button',
 }) => {
   return (
     <button
       onClick={onClick}
       disabled={disabled}
-      className={`${styles.btn} ${className}`} // Add your own classes if needed
+      className={`${styles.btn} ${styles[variant]}`}
       type={type}
     >
       {label}

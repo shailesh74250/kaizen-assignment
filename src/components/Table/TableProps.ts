@@ -1,9 +1,8 @@
-// Define the type for the table props
-export interface TablePropsType<T> {
+export interface TableProps<T> {
   data: T[];
   columns: {
     Header: string;
-    accessor: string; // Accessor can be a key of the data type
+    accessor: string;
   }[];
   onRowClick?: (row: T) => void;
   isLoading?: boolean;

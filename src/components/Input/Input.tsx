@@ -2,7 +2,7 @@ import { InputProps } from './InputProps';
 import styles from './Input.module.scss';
 
 const Input: React.FC<InputProps> = ({
-  type = 'text',              // Default type is text
+  type = 'text',
   value,
   onChange,
   onKeyDown,
@@ -20,7 +20,7 @@ const Input: React.FC<InputProps> = ({
       onKeyDown={onKeyDown}
       placeholder={placeholder}
       disabled={disabled}
-      className={`${styles.input} ${className}`} // Add your own classes if needed
+      className={`${styles.input} ${className}`}
       name={name}
       required={required}
     />

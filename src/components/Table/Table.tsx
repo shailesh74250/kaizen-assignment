@@ -2,10 +2,11 @@ import Loader from '../Loader/Loader';
 import React from 'react';
 import styles from './Table.module.scss';
 import globalStyles from '../../main.module.scss';
-import { TablePropsType } from './TableProps';
+import { TableProps } from './TableProps';
 import { getNestedValue } from '../../utils/getNestedValue';
+import { NO_DATA_FOUND } from '../../utils/constants';
 
-const Table = <T,>({ data, columns, onRowClick, isLoading, error }: TablePropsType<T>) => {
+const Table = <T,>({ data, columns, onRowClick, isLoading, error }: TableProps<T>) => {
   if (isLoading) {
     return <div className={globalStyles.loader}>
       <Loader size='small' color="#3498db" />
@@ -30,7 +31,13 @@ const Table = <T,>({ data, columns, onRowClick, isLoading, error }: TablePropsTy
               <td key={column.Header}>{String(getNestedValue(row, column.accessor))}</td>
             ))}
           </tr>
-        )) : <p>No Data Found!</p>}
+        )) : 
+          <tr>
+            <td colSpan={columns.length} style={{ textAlign: 'center' }}>
+              {NO_DATA_FOUND}
+            </td>
+          </tr>
+        }
       </tbody>
     </table>
   );

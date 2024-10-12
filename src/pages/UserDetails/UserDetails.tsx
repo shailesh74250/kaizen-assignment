@@ -1,14 +1,16 @@
 import Loader from '../../components/Loader/Loader';
 import React, { useEffect } from 'react';
 import styles from './UserDetails.module.scss';
+import globalStyles from '../../main.module.scss';
 import { getSingleUser } from '../../store/userAction';
 import { useAppDispatch } from '../../hooks/useAppDispatch';
 import { useAppSelector } from '../../hooks/useAppSelector';
 import { useParams } from 'react-router-dom';
 import { USER_DETAILS } from '../../utils/constants';
+import { Notify } from '../../components/Notify/Notify';
 
 const UserDetails: React.FC = () => {
-  const { id } = useParams<{ id: string }>(); // Get the user id from the URL
+  const { id } = useParams<{ id: string }>();
   const dispatch = useAppDispatch();
   const { user, loading, error } = useAppSelector((state) => state.users)
 
@@ -17,13 +19,13 @@ const UserDetails: React.FC = () => {
   }, [id]);
 
   if (loading) {
-    return <div className='loader'>
+    return <div className={globalStyles.loader}>
       <Loader size='small' color="#3498db" />
     </div>
   }
 
   if (error) {
-    return <div>Error: {error}</div>
+    return Notify(error, 'error');
   }
 
   return (

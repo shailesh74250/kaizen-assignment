@@ -31,12 +31,12 @@ describe('Button Component', () => {
 
   it('applies the correct className', () => {
     const label = 'Click Me';
-    const className = 'custom-class';
-    render(<Button onClick={() => {}} label={label} className={className} />);
+    const variant = 'secondary';
+    render(<Button onClick={() => {}} label={label} variant={variant} />);
     
     const buttonElement = screen.getByText(label);
     expect(buttonElement).toHaveClass('btn');
-    expect(buttonElement).toHaveClass('custom-class');
+    expect(buttonElement).toHaveClass('secondary');
   });
 
   it('renders with correct type', () => {
