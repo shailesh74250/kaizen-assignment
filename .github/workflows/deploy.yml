@@ -23,10 +23,18 @@ jobs:
           rm -rf node_modules package-lock.json
           npm install --legacy-peer-deps
     
-      - name: Start server
+      - name: Start Vite server
         run: npm run dev &
         env:
-          PORT: 5173
+          CI: true
+  
+      - name: Wait for server to start
+        run: |
+          while ! nc -z localhost 5173; do
+            sleep 1
+          done
+        env:
+          CI: true
 
       # - name: Run unit tests (Jest)
       #   run: npm run test
