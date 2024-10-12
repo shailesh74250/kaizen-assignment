@@ -1,21 +1,21 @@
-import './Table.scss';
-import Loader from '../Loader';
+import Loader from '../Loader/Loader';
 import React from 'react';
-import { TablePropsType } from './TableType';
+import styles from './Table.module.scss';
+import globalStyles from '../../main.module.scss';
+import { TablePropsType } from './TableProps';
 import { getNestedValue } from '../../utils/getNestedValue';
 
 const Table = <T,>({ data, columns, onRowClick, isLoading, error }: TablePropsType<T>) => {
   if (isLoading) {
-    return <div className='loader'>
+    return <div className={globalStyles.loader}>
       <Loader size='small' color="#3498db" />
     </div>
   }
-  // Render error state
   if (error) {
     return <div>Error: {error}</div>;
   }
   return (
-    <table>
+    <table className={styles.table}>
       <thead>
         <tr>
           {columns.map((column) => (

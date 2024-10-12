@@ -1,6 +1,8 @@
 import { render, fireEvent } from '@testing-library/react';
-import Table from './Table';
-import '@testing-library/jest-dom/extend-expect'; // For matchers like .toBeInTheDocument
+import Table from './Table'; 
+
+// Mock the Loader component to avoid rendering the actual loader during tests
+jest.mock('../Loader', () => () => <div>Loading...</div>);
 
 // Mock data for tests
 const columns = [
@@ -19,7 +21,7 @@ const errorMessage = 'Something went wrong';
 describe('Table Component', () => {
   
   it('renders the loader when isLoading is true', () => {
-    const { getByText } = render(<Table data={[]} columns={columns} isLoading={true} error={null} onRowClick={jest.fn()} />);
+    const { getByText } = render(<Table data={[]} columns={columns} isLoading={true} onRowClick={jest.fn()} />);
     
     // Check if the loader is rendered
     expect(getByText('Loading...')).toBeInTheDocument();
@@ -33,7 +35,7 @@ describe('Table Component', () => {
   });
 
   it('renders the table with data when isLoading is false and no error', () => {
-    const { getByText } = render(<Table data={data} columns={columns} isLoading={false} error={null} onRowClick={jest.fn()} />);
+    const { getByText } = render(<Table data={data} columns={columns} isLoading={false} onRowClick={jest.fn()} />);
     
     // Check if the table headers are rendered
     expect(getByText('Name')).toBeInTheDocument();
@@ -45,7 +47,7 @@ describe('Table Component', () => {
   });
 
   it('renders the "No Data Found!" message when data is empty', () => {
-    const { getByText } = render(<Table data={[]} columns={columns} isLoading={false} error={null} onRowClick={jest.fn()} />);
+    const { getByText } = render(<Table data={[]} columns={columns} isLoading={false} onRowClick={jest.fn()} />);
     
     // Check if the "No Data Found!" message is rendered
     expect(getByText('No Data Found!')).toBeInTheDocument();
@@ -54,7 +56,7 @@ describe('Table Component', () => {
   it('calls onRowClick when a row is clicked', () => {
     const mockOnRowClick = jest.fn();
     
-    const { getByText } = render(<Table data={data} columns={columns} isLoading={false} error={null} onRowClick={mockOnRowClick} />);
+    const { getByText } = render(<Table data={data} columns={columns} isLoading={false} onRowClick={mockOnRowClick} />);
     
     // Click on a row
     fireEvent.click(getByText('John Doe'));

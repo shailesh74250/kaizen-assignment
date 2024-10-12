@@ -1,5 +1,5 @@
 import { render } from '@testing-library/react';
-import Loader from './index';  // Adjust the path if necessary
+import Loader from './Loader';  // Adjust the path if necessary
 
 describe('Loader Component', () => {
   it('renders with default size and color', () => {

@@ -8,6 +8,7 @@ export default {
    transform: {
     '^.+\\.tsx?$': 'ts-jest',
     '^.+\\.css$': 'jest-transform-css',
+    '\\.(png|jpg|jpeg|gif|svg)$': 'jest-transform-stub', // Mock image imports
   },
   setupFilesAfterEnv: ['<rootDir>/src/setupTests.ts'],
 };

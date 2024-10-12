@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { searchUser, fetchUsers, getSingleUser } from './userAction';
-import { UserState } from './userType';
+import { searchUser, fetchUsers, getSingleUser } from '../userAction';
+import { UserState } from '../userProps';
 
 // Initial state
 const initialState: UserState = {
@@ -10,7 +10,7 @@ const initialState: UserState = {
   error: null,
 };
 
-const userReducer = createSlice({
+const userSlice = createSlice({
   name: 'users',
   initialState,
   reducers: {}, // You can add synchronous reducers here if needed
@@ -62,4 +62,4 @@ const userReducer = createSlice({
   },
 });
 
-export default userReducer.reducer;
+export default userSlice.reducer;

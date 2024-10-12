@@ -1,33 +1,31 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios'
-import { UserType } from './userType'
+import { UserProps } from './userProps'
+import { API_URL } from '../utils/constants'
 
 // Fetch all users
-export const fetchUsers = createAsyncThunk<UserType[], void>(
+export const fetchUsers = createAsyncThunk<UserProps[], void>(
   'users/fetchUsers',
   async () => {
-    const apiUrl = import.meta.env.VITE_API_URL;
-    const response = await axios.get(apiUrl);
+    const response = await axios.get(API_URL);
     return response.data.users; 
   }
 );
 
 // Search users by name
-export const searchUser = createAsyncThunk<UserType[], string>(
+export const searchUser = createAsyncThunk<UserProps[], string>(
   'users/searchUser',
   async (name: string) => {
-    const apiUrl = import.meta.env.VITE_API_URL;
-    const response = await axios.get(`${apiUrl}/search?q=${name}`);
+    const response = await axios.get(`${API_URL}/search?q=${name}`);
     return response.data.users;
   }
 );
 
 // Get a single user by ID
-export const getSingleUser = createAsyncThunk<UserType, string | undefined>(
+export const getSingleUser = createAsyncThunk<UserProps, string | undefined>(
   'users/getSingleUser',
   async (id?: string) => {
-    const apiUrl = import.meta.env.VITE_API_URL;
-    const response = await axios.get(`${apiUrl}/${id}`);
+    const response = await axios.get(`${API_URL}/${id}`);
     console.log('user response', response.data)
     return response.data
   }
