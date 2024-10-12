@@ -34,8 +34,8 @@ To run this project, ensure you have the following tools installed on your syste
 ### Installation
   1. Clone the repository:
     - git clone https://github.com/shailesh74250/kaizen-assignment.git
-    - cd your-project
-  2. Install the project dependencies:
+  2. Go to project directory: cd kaizen-assignment
+  3. Install the project dependencies:
     - npm install or yarn install
 
 ### Available Scripts  
@@ -49,6 +49,7 @@ To run this project, ensure you have the following tools installed on your syste
 
 
 ### Project Structure
+```
 ├── public/               # Static assets
 ├── src/                  # Source code
 │   ├── assets/           # Images, fonts, static assets
@@ -68,12 +69,13 @@ To run this project, ensure you have the following tools installed on your syste
 ├── vite.config.ts        # Vite configuration
 ├── package.json          # Project metadata and dependencies
 └── README.md             # This file
+```
 
-
-### Development Or Run development server
+### Run development server
 Use the following command to start the development server. Open your browser at http://localhost:5173:
 - Create a .env file in the project root directory, then copy the contents from .env.example and update the values as needed.
 - Start Development Server: npm run dev
+- The development server. Open your browser at http://localhost:5173
 
 ### Build for Production
 To create an optimized production build, run: npm run build
@@ -98,10 +100,10 @@ For staging deployment just push to the main branch, It will build and deploy to
 Production App URL - https://kaizen-assignment-git-ebe8dd-shailesh-kumars-projects-1873d7c3.vercel.app/ 
 
 ### Configuration
-#### Vite Configuration
+1. Vite Configuration
 Vite's configuration file is located at vite.config.ts. This file allows you to configure build settings, plugins, and more.
 
-#### TypeScript Configuration
+2. TypeScript Configuration
 The TypeScript configuration can be found in tsconfig.json. This contains the compiler options and type-checking rules for the project.
 
 
