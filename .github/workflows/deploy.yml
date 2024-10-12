@@ -18,20 +18,10 @@ jobs:
         with:
           node-version: '20.10.0'
       
-      - name: Cache Node modules
-        uses: actions/cache@v2
-        with:
-          path: |
-            ~/.npm
-            node_modules
-          key: ${{ runner.os }}-node-modules-${{ hashFiles('**/package-lock.json') }}
-          restore-keys: |
-            ${{ runner.os }}-node-modules-
-    
-      - name: Install dependencies
+      - name: Clear cache and install dependencies
         run: |
           rm -rf node_modules package-lock.json
-          npm install --no-optional # Use `--no-optional` if you're encountering optional dependency issues
+          npm install --no-optional
     
       - name: Start server
         run: npm run dev &
