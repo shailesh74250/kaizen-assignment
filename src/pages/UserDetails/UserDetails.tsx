@@ -25,7 +25,7 @@ const UserDetails: React.FC = () => {
   }
 
   if (error) {
-    return Notify(error, 'error');
+    Notify(error, 'error');
   }
 
   return (
