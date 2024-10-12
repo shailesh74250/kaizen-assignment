@@ -40,7 +40,7 @@ jobs:
       #   run: npm run test
 
       - name: Run Cypress E2E tests
-        run: npm run test:e2e
+        run: npx cypress run --headless
 
   deploy:
     runs-on: ubuntu-latest
