@@ -1,0 +1,1 @@
+export type NotifyPropsType = 'default' | 'error' | 'info' | 'success';
