@@ -12,41 +12,55 @@ import { Notify } from '../../components/Notify/Notify';
 const UserDetails: React.FC = () => {
   const { id } = useParams<{ id: string }>();
   const dispatch = useAppDispatch();
-  const { user, loading, error } = useAppSelector((state) => state.users)
+  const { user, loading, error } = useAppSelector((state) => state.users);
 
   useEffect(() => {
-    dispatch(getSingleUser(id))
-  }, [id]);
+    dispatch(getSingleUser(id));
+  }, [id, dispatch]);
 
   if (loading) {
-    return <div className={globalStyles.loader}>
-      <Loader size='small' color="#3498db" />
-    </div>
-  }
+    return (
+      <div className={globalStyles.loader}>
+        <Loader size="small" color="#3498db" />
+      </div>
+    );
+  };
 
   if (error) {
     Notify(error, 'error');
-  }
+  };
+
+  if (!user) {
+    return <div>No user found.</div>;
+  };
+
+  const { firstName, lastName, email, phone, company } = user;
+  const { name: companyName, title: companyTitle, department: companyDepartment, address } = company || {};
+  const { address: companyAddress, city, state, country, postalCode } = address || {};
+
+  // Memoize user details for potential re-renders
+  const details = [
+    { label: 'First Name', value: firstName },
+    { label: 'Last Name', value: lastName },
+    { label: 'Email', value: email },
+    { label: 'Phone', value: phone },
+    { label: 'Company Name', value: companyName },
+    { label: 'Company Title', value: companyTitle },
+    { label: 'Company Department', value: companyDepartment },
+    {
+      label: 'Company Address',
+      value: `${companyAddress}, ${city}, ${state}, ${country} - ${postalCode}`
+    }
+  ];
 
   return (
     <div className={styles['detail-container']}>
-      {user && (
-      <>
-        <h2>{USER_DETAILS}</h2>
-        <p><strong>First Name:</strong> {user?.firstName}</p>
-        <p><strong>Last Name:</strong> {user?.lastName}</p>
-        <p><strong>Email:</strong> {user?.email}</p>
-        <p><strong>Phone:</strong> {user?.phone}</p>
-        <p><strong>Company Name:</strong> {user?.company.name}</p>
-        <p><strong>Company Title:</strong> {user?.company.title}</p>
-        <p><strong>Company Department:</strong> {user?.company?.department}</p>
-        <p>
-          <strong>Company Address:</strong> {user?.company?.address?.address},&nbsp; 
-          {user?.company?.address?.city},&nbsp;{user?.company?.address?.state},&nbsp; 
-          {user?.company?.address?.country}-{user?.company?.address?.postalCode}
+      <h2>{USER_DETAILS}</h2>
+      {details.map(({ label, value }) => (
+        <p key={label}>
+          <strong>{label}:</strong> {value}
         </p>
-      </>  
-      )}
+      ))}
     </div>
   );
 };
