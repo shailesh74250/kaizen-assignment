@@ -7,7 +7,6 @@ describe('Navbar Component', () => {
     const { getByText, getByAltText } = render(<Navbar />);
     expect(getByText('Kaizen Assignment')).toBeInTheDocument();
     const logoImage = getByAltText('Logo') as HTMLImageElement;
-    console.log('logo image', logoImage);
     expect(logoImage).toBeInTheDocument();
   });
 

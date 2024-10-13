@@ -8,7 +8,6 @@ import { useAppSelector } from '../../hooks/useAppSelector';
 import { useNavigate } from 'react-router-dom';
 import { USER_LIST, USER_TABLE_COLUMN } from '../../utils/constants';
 import { Notify } from '../../components/Notify/Notify';
-import { UserProps } from '../../store/userProps';
 
 const UserList: React.FC = () => {
   const dispatch = useAppDispatch();
