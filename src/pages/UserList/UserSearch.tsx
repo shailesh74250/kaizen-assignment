@@ -17,7 +17,7 @@ const SearchUser: React.FC = () => {
   }
 
   const handleOnClick = () => {
-    dispatch(searchUser(userName));
+    dispatch(searchUser(userName.trim()));
   }
 
   const handleOnChange = useCallback(
@@ -33,7 +33,7 @@ const SearchUser: React.FC = () => {
         dispatch(searchUser(userName.trim()));
       }  
     },
-    []
+    [userName]
   );
 
   return (
