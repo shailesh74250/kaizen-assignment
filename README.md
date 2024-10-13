@@ -33,10 +33,10 @@ To run this project, ensure you have the following tools installed on your syste
 
 ### Installation
 1. Clone the repository:
-  - git clone https://github.com/shailesh74250/kaizen-assignment.git
+    - git clone https://github.com/shailesh74250/kaizen-assignment.git
 2. Go to project directory: cd kaizen-assignment
 3. Install the project dependencies:
-  - npm install or yarn install
+    - npm install or yarn install
 
 ### Run development server
 Use the following command to start the development server. Open your browser at http://localhost:5173:
