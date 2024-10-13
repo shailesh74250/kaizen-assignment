@@ -2,7 +2,7 @@ import { render, fireEvent } from '@testing-library/react';
 import Table from './Table'; 
 
 // Mock the Loader component to avoid rendering the actual loader during tests
-jest.mock('../Loader', () => () => <div>Loading...</div>);
+jest.mock('../Loader/Loader', () => () => <div>Loading...</div>);
 
 // Mock data for tests
 const columns = [

@@ -1,7 +1,7 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 import { UserProps } from './userProps';
-import { API_URL } from '../utils/constants';
+const API_URL = import.meta.env.VITE_API_URL;
 
 // Fetch all users
 export const fetchUsers = createAsyncThunk<UserProps[], void>(

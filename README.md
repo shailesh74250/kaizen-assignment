@@ -82,8 +82,9 @@ To create an optimized production build, run: npm run build
 This will bundle your application and output the assets into the dist directory. The assets are optimized, minified, and ready to be deployed.
 
 ### Running Tests
-1. Running Unit Tests: npm run test
+1. Running Unit Tests: npm run test 
 2. End-to-End Testing: npm run e2e
+3. End-to-End Testing with Application UI: npm run cypress:open
 
 ### Linting and Formatting
 This project uses ESLint for static code analysis and Prettier for code formatting.

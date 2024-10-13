@@ -36,11 +36,11 @@ jobs:
       #   env:
       #     CI: true
 
-      # - name: Run unit tests (Jest)
-      #   run: npm run test
-
       # - name: Run Cypress E2E tests
-      #   run: npx cypress run --headless
+      #   run: npm run test:e2e
+
+      - name: Run unit tests (Jest)
+        run: npm run test
 
   deploy:
     runs-on: ubuntu-latest
