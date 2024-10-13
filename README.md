@@ -2,21 +2,21 @@
 The Kaizen Assignment application is built with React, Typescript, Vite, and SWC. It is a frontend application that provides a list of users and user details.
 
 ## Table of Contents
-    1.  Overview  
-    2.  Features  
-    3.  Prerequisites  
-    4.  Installation
-    5.  Available Scripts  
-    6.  Project Structure
-    7.  Development
-    8.  Build for Production  
-    9.  Running Tests
-    10. Linting and Formatting
-    11. Deploy to Staging
-    12. Deploy to Production
-    13. Configuration
-    14. Contributing
-    15. License
+  1.  Overview  
+  2.  Features  
+  3.  Prerequisites  
+  4.  Installation
+  5.  Start Development Server
+  6.  Available Scripts
+  7.  Project Structure
+  8.  Build for Production  
+  9.  Running Tests
+  10. Linting and Formatting
+  11. Deploy to Staging
+  12. Deploy to Production
+  13. Configuration
+  14. Contributing
+  15. License
 
 ### Overview
 This project is a Kaizen recruitment assignment built with a modern front tech stack using React + TypeScript + Vite + SWC. It features a user list, search user by name, and user details.
@@ -28,24 +28,30 @@ This project is a Kaizen recruitment assignment built with a modern front tech s
 
 ### Prerequisites
 To run this project, ensure you have the following tools installed on your system:
-  1. Node.js (version 16.x or later) 
-  2. npm or yarn (for package management)  
+1. Node.js (version 16.x or later) 
+2. npm or yarn (for package management)  
 
 ### Installation
-  1. Clone the repository:
-    - git clone https://github.com/shailesh74250/kaizen-assignment.git
-  2. Go to project directory: cd kaizen-assignment
-  3. Install the project dependencies:
-    - npm install or yarn install
+1. Clone the repository:
+  - git clone https://github.com/shailesh74250/kaizen-assignment.git
+2. Go to project directory: cd kaizen-assignment
+3. Install the project dependencies:
+  - npm install or yarn install
+
+### Run development server
+Use the following command to start the development server. Open your browser at http://localhost:5173:
+- Create a .env file in the project root directory, then copy the contents from .env.example and update the values as needed.
+- Start Development Server: npm run dev
+- The development server. Open your browser at http://localhost:5173
 
 ### Available Scripts  
-    1. npm run dev (Runs the app in development mode.)
-    2. npm run build (Builds the app for production to the dist folder.)    
-    3. npm run preview (After building the app, use this command to serve the production build locally to test it.)
-    4. npm run lint (Runs ESLint to check for code quality and Prettier to check code formatting. Errors and warnings will be displayed in the console.) 
-    5. npm run test (Runs the unit tests using Jest or Cypress for end-to-end testing. Modify as per your setup.)
-    6. cypress:open (Open Cypress UI and Run test cases with UI)
-    7. test:e2e (Run cypress test in console)
+1. npm run dev (Runs the app in development mode.)
+2. npm run build (Builds the app for production to the dist folder.)    
+3. npm run preview (After building the app, use this command to serve the production build locally to test it.)
+4. npm run lint (Runs ESLint to check for code quality and Prettier to check code formatting. Errors and warnings will  be displayed in the console.) 
+5. npm run test (Runs the unit tests using Jest or Cypress for end-to-end testing. Modify as per your setup.)
+6. cypress:open (Open Cypress UI and Run test cases with UI)
+7. test:e2e (Run cypress test in console)
 
 
 ### Project Structure
@@ -70,12 +76,6 @@ To run this project, ensure you have the following tools installed on your syste
 ├── package.json          # Project metadata and dependencies
 └── README.md             # This file
 ```
-
-### Run development server
-Use the following command to start the development server. Open your browser at http://localhost:5173:
-- Create a .env file in the project root directory, then copy the contents from .env.example and update the values as needed.
-- Start Development Server: npm run dev
-- The development server. Open your browser at http://localhost:5173
 
 ### Build for Production
 To create an optimized production build, run: npm run build
