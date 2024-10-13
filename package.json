@@ -45,6 +45,7 @@
     "jest-environment-jsdom": "^29.7.0",
     "jest-transform-css": "^6.0.1",
     "jest-transform-stub": "^2.0.0",
+    "rollup": "^4.24.0",
     "sass-embedded": "^1.79.4",
     "ts-jest": "^29.2.5",
     "ts-jest-mock-import-meta": "^1.2.0",
