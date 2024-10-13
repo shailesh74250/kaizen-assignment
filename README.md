@@ -1,5 +1,5 @@
 # Kaizen Assignment
-The Kaizen Assignment application built with React, Typescript and Vite. It is frontend application which provides list of users and users details.
+The Kaizen Assignment application is built with React, Typescript, Vite, and SWC. It is a frontend application that provides a list of users and user details.
 
 ## Table of Contents
     1.  Overview  
@@ -19,7 +19,7 @@ The Kaizen Assignment application built with React, Typescript and Vite. It is f
     15. License
 
 ### Overview
-This project is a Kaizen recrutment assignment build with a modern front tech stack using React, TypeScript, and Vite. It features a users list, search user by name and user details.
+This project is a Kaizen recruitment assignment built with a modern front tech stack using React + TypeScript + Vite + SWC. It features a user list, search user by name, and user details.
 
 ### Features
 - List of Users
@@ -93,12 +93,12 @@ To lint and format your code, run: npm run lint
 ### Deploy to Staging
 Deployment Pipeline setup with GitHub Actions and Vercel. 
 For staging deployment just push to the development branch, It will build and deploy to dev instance.
-Staging App URL - https://kaizen-assignment-git-ebe8dd-shailesh-kumars-projects-1873d7c3.vercel.app/ 
+Staging App URL - https://kaizen-assignment-git-ebe8dd-shailesh-kumars-projects-1873d7c3.vercel.app
 
 ### Deploy to Production
 Deployment Pipeline setup with GitHub Actions and Vercel. 
 For staging deployment just push to the main branch, It will build and deploy to production instance.
-Production App URL - https://kaizen-assignment-git-ebe8dd-shailesh-kumars-projects-1873d7c3.vercel.app/ 
+Production App URL - https://kaizen-assignment.vercel.app 
 
 ### Configuration
 1. Vite Configuration

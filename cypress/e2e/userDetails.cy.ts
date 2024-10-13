@@ -1,41 +1,18 @@
 /// <reference types="cypress" />
+import { MOCK_USER } from '../../src/utils/constants'
 
 describe('User Details Page', () => {
-  const userId = '1'; // Replace this with a real user ID from your mock or seed data
-
+  const userId = '1';
   beforeEach(() => {
-    // Assuming the app uses React Router and you can visit the user details page using /users/:id
     cy.visit(`/users/${userId}`);
   });
-
   it('should display user details after successful data fetching', () => {
     // Mock the API call to fetch user details
     cy.intercept('GET', `/users/${userId}`, {
       statusCode: 200,
-      body: {
-        firstName: 'John',
-        lastName: 'Doe',
-        email: 'john.doe@example.com',
-        phone: '123-456-7890',
-        company: {
-          name: 'Tech Corp',
-          title: 'Software Engineer',
-          department: 'Engineering',
-          address: {
-            address: '123 Main St',
-            city: 'New York',
-            state: 'NY',
-            country: 'USA',
-            postalCode: '10001',
-          }
-        }
-      }
+      body: MOCK_USER,
     }).as('getUser');
-
-    // Wait for the API call and check if user details are rendered correctly
     cy.wait('@getUser');
-
-    // Check if the user details are correctly displayed
     cy.get('h2').should('contain.text', 'User Details');
     cy.get('p').contains('First Name: John');
     cy.get('p').contains('Last Name: Doe');

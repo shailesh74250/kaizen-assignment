@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect } from 'react';
+import React, { useCallback, useEffect, useMemo } from 'react';
 import SearchUser from './UserSearch';
 import Table from '../../components/Table/Table';
 import styles from './UserList.module.scss';
@@ -6,22 +6,15 @@ import { fetchUsers } from '../../store/userAction';
 import { useAppDispatch } from '../../hooks/useAppDispatch';
 import { useAppSelector } from '../../hooks/useAppSelector';
 import { useNavigate } from 'react-router-dom';
-import { USER_LIST } from '../../utils/constants';
+import { USER_LIST, USER_TABLE_COLUMN } from '../../utils/constants';
 import { Notify } from '../../components/Notify/Notify';
 // import { UserProps } from '../../store/userProps';
-
-const column = [
-  { Header: 'First Name', accessor: 'firstName' },
-  { Header: 'Last Name', accessor: 'lastName' },
-  { Header: 'Email', accessor: 'email' },
-  { Header: 'Phone', accessor: 'phone' },
-  { Header: 'Company Name', accessor: 'company.name' },
-];
 
 const UserList: React.FC = () => {
   const dispatch = useAppDispatch();
   const { users, loading, error } = useAppSelector((state) => state.users);
   const navigate = useNavigate();
+  const memoizedColumns = useMemo(() => USER_TABLE_COLUMN, []);
 
   useEffect(() => {
     dispatch(fetchUsers());
@@ -44,7 +37,7 @@ const UserList: React.FC = () => {
       <SearchUser />
       <Table
         data={users}
-        columns={column}
+        columns={memoizedColumns}
         onRowClick={handleRowClick}
         isLoading={loading}
       />
